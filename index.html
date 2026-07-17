@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>password-generator</title>
+  </head>
+  <body class="bg-[#14131B]  font-[JetBrainsMono]">
+  <div>
+    <h1 class="text-gray-700 font-bold text-3xl flex justify-center">Password Generator</h1>
+  </div>
+  <div class="bg-gray-900 w-[540px] h-[80px] flex justify-self-center mt-6">
+<input type="password" id="password">
+<i data-lucide="copy" class="w-6 h-6 text-[#A4FFAF]" id="copy"></i>
+  </div>
+  <div class="bg-gray-900 w-[540px] h-[500px] justify-self-center mt-10 p-5">
+      <h4 class="text-white text-2xl mb-5">Character Length</h4><span id="span">10</span>
+<input type="range" max="20" min="0" class="w-[500px]" id="range">
+<div id="Uppercase">
+<input type="checkbox"><label class="text-2xl text-2xl text-white">Include Uppercase Letters
+</label></div>
+<div id=" Lowercase">
+<input type="checkbox"><label class="text-2xl text-2xl text-white">Include Lowercase Letters
+</label></div>
+<div id="Numbers">
+<input type="checkbox"><label class="text-2xl text-2xl text-white">Include Numbers
+</label></div>
+<div id="Symbols">
+<input type="checkbox"><label class="text-2xl text-2xl text-white">Include Symbols
+</label>
+</div>
+<div class="bg-gray-700 strength-box w-[500px] h-[80px]" id="bar5">
+  <span>Strength
+</span></div>
+<div id="generate">
+  <button class="bg-green-500 w-[250px] h-[80px] justify-self-center mb-10">generate</button>
+</div>
+  </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
