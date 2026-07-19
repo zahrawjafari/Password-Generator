@@ -6,35 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>password-generator</title>
   </head>
-  <body class="bg-[#14131B]  font-[JetBrainsMono]">
-  <div>
-    <h1 class="text-gray-700 font-bold text-3xl flex justify-center">Password Generator</h1>
+  <body class="bg-[#14131B] justify-self-center font-[JetBrainsMono] min-h-screen flex flex-col items-center">
+  <div class=" mt-6">
+    <h1 class="text-gray-700 font-bold text-3xl">Password Generator</h1>
   </div>
-  <div class="bg-gray-900 w-[540px] h-[80px] flex justify-self-center mt-6">
+  <div class="bg-gray-900 w-[540px] h-[80px] flex items-center justify-between px-6">
 <input type="password" id="password">
 <i data-lucide="copy" class="w-6 h-6 text-[#A4FFAF]" id="copy"></i>
   </div>
   <div class="bg-gray-900 w-[540px] h-[500px] justify-self-center mt-10 p-5">
-      <h4 class="text-white text-2xl mb-5">Character Length</h4><span id="span">10</span>
-<input type="range" max="20" min="0" class="w-[500px]" id="range">
+      <h4 class="text-white text-2xl mb-5">Character Length <span id="span" class="text-4xl text-green-400 ml-[250px]">10</span></h4>
+<input type="range" min="0" max="20" value="10" class="w-[500px] " id="range">
 <div id="Uppercase">
-<input type="checkbox"><label class="text-2xl text-2xl text-white">Include Uppercase Letters
+<input type="checkbox"><label class="text-2xl text-2xl text-white"> Include Uppercase Letters
 </label></div>
 <div id=" Lowercase">
-<input type="checkbox"><label class="text-2xl text-2xl text-white">Include Lowercase Letters
+<input type="checkbox"><label class="text-2xl text-2xl text-white"> Include Lowercase Letters
 </label></div>
 <div id="Numbers">
-<input type="checkbox"><label class="text-2xl text-2xl text-white">Include Numbers
+<input type="checkbox"><label class="text-2xl text-2xl text-white"> Include Numbers
 </label></div>
 <div id="Symbols">
-<input type="checkbox"><label class="text-2xl text-2xl text-white">Include Symbols
+<input type="checkbox"><label class="text-2xl text-2xl text-white"> Include Symbols
 </label>
 </div>
-<div class="bg-gray-700 strength-box w-[500px] h-[80px]" id="bar5">
-  <span>Strength
+<div class="bg-gray-700 strength-box w-[500px] h-[80px] mt-7" id="bar5">
+  <div></div> <div></div> <div></div> <div></div><span>Strength
 </span></div>
-<div id="generate">
-  <button class="bg-green-500 w-[250px] h-[80px] justify-self-center mb-10">generate</button>
+<div id="generate" class="justify-self-center mt-12">
+  <button class="bg-green-500 w-[500px] h-[80px] items-center justify-center ">generate</button>
 </div>
   </div>
     <script type="module" src="/src/main.js"></script>
