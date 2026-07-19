@@ -1,4 +1,8 @@
 @import "tailwindcss";
+@font-face {
+    font-family:jetBrains ;
+    src: url(fonts/JetBrains_Mono/JetBrainsMono-VariableFont_wght.ttf);
+}
 input[type="range"] {
   -webkit-appearance: none;
   appearance: none;
