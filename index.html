@@ -6,19 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>password-generator</title>
   </head>
-  <body class="bg-[#14131B] justify-self-center font-[jetBrains] min-h-screen flex flex-col items-center">
+  <body class="bg-[#14131B] font-[jetBrains] min-h-screen flex flex-col items-center">
   <div class=" mt-6">
     <h1 class="text-gray-700 font-bold text-3xl">Password Generator</h1>
   </div>
   <div class="bg-gray-900 w-[540px] h-[80px] flex items-center justify-between px-6">
-<input type="password" id="password">
+<input 
+type="password" 
+id="password"
+class="bg-transparent outline-none text-white text-2xl w-full"
+/>
 <i data-lucide="copy" class="w-6 h-6 text-[#A4FFAF]" id="copy"></i>
   </div>
   <div class="bg-gray-900 w-[540px] h-[500px] justify-self-center mt-10 p-5">
       <h4 class="text-white text-2xl mb-5">Character Length <span id="span" class="text-4xl text-green-400 ml-[250px]">10</span></h4>
-<input type="range" min="0" max="20" value="10" class="w-[500px] " id="range">
+<input 
+type="range"
+min="0"
+max="20"
+value="10"
+id="range"
+class="w-[500px] accent-green-400"
+/>
 <div>
-<input type="checkbox"><label class="text-2xl text-2xl text-white" id="Uppercase">Include Uppercase Letters
+<input type="checkbox" id="uppercase">
+<label class="text-2xl text-white" for="uppercase">
+Include Uppercase Letters
 </label></div>
 <div>
 <input type="checkbox"><label class="text-2xl text-2xl text-white" id="Lowercase">Include Lowercase Letters
@@ -59,7 +72,10 @@
         </div>
 
 <div id="generate" class="justify-self-center mt-12">
-  <button class="bg-green-500 w-[500px] h-[80px] items-center justify-center ">generate</button>
+ <button 
+class="bg-green-500 w-[500px] h-[80px] flex items-center justify-center">
+generate
+</button>
 </div>
   </div>
     <script type="module" src="/src/main.js"></script>
