@@ -1,14 +1,13 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>password-generator</title>
-  </head>
-  <body class="bg-[#14131B] font-[jetBrains] min-h-screen flex flex-col items-center">
- <div class="w-[540px] mx-auto mt-20">
-
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Password Generator</title>
+</head>
+<body class="bg-[#14131B] font-[jetBrains] min-h-screen flex flex-col items-center">
+<div class="w-[540px] mx-auto mt-20">
   <h1 class="text-center text-gray-400 text-xl mb-6">
     Password Generator
   </h1>
@@ -25,66 +24,91 @@
     </button>
   </div>
 </div>
-  <div class="bg-gray-900 w-[540px] h-[500px] justify-self-center mt-10 p-5">
-      <h4 class="text-white text-2xl mb-5">Character Length <span id="span" class="text-4xl text-green-400 ml-[250px]">10</span></h4>
-<input 
+<div class="bg-gray-900 w-[540px] mt-10 p-5">
+<h4 class="text-white text-2xl mb-5">
+Character Length
+<span 
+id="span"
+class="text-4xl text-green-400 ml-[250px]">
+10
+</span>
+</h4>
+<input
+id="range"
 type="range"
 min="0"
 max="20"
 value="10"
-id="range"
 class="w-[500px] accent-green-400"
 />
+<div class="mt-8">
 <div>
 <input type="checkbox" id="uppercase">
-<label class="text-2xl text-white" for="uppercase">
+<label 
+for="uppercase"
+class="text-2xl text-white">
 Include Uppercase Letters
-</label></div>
-<div>
-<input type="checkbox"><label class="text-2xl text-2xl text-white" id="Lowercase">Include Lowercase Letters
-</label></div>
-<div>
-<input type="checkbox"><label class="text-2xl text-2xl text-white" id="Numbers">Include Numbers
-</label></div>
-<div>
-<input type="checkbox"><label class="text-2xl text-2xl text-white" id="Symbols">Include Symbols
 </label>
 </div>
- <div class="flex gap-5 items-center justify-between mt-6 bg-bg-second p-3 bg-gray-700 w-[500px] h-[80px]"
-        >
-          <div>
-            <h2 class="text-text-second">STREGTH</h2>
-          </div>
-          <div class="flex gap-2 items-center">
-            <div id="status"></div>
-            <div class="flex gap-1">
-              <div
-                id="bar1"
-                class="w-2 h-5 border-[1px] border-white bg-bg-second"
-              ></div>
-              <div
-                id="bar2"
-                class="w-2 h-5 border-[1px] border-white bg-bg-second"
-              ></div>
-              <div
-                id="bar3"
-                class="w-2 h-5 border-[1px] border-white bg-bg-second"
-              ></div>
-              <div
-                id="bar4"
-                class="w-2 h-5 border-[1px] border-white bg-bg-second"
-              ></div>
-            </div>
-          </div>
-        </div>
-
-<div class="justify-self-center mt-12">
- <button id="generatebtn"
-class="bg-green-500 w-[500px] h-[80px] flex items-center justify-center">
-generate
+<div>
+<input type="checkbox" id="lowercase">
+<label 
+for="lowercase"
+class="text-2xl text-white">
+Include Lowercase Letters
+</label>
+</div>
+<div>
+<input type="checkbox" id="numbers">
+<label 
+for="numbers"
+class="text-2xl text-white">
+Include Numbers
+</label>
+</div>
+<div>
+<input type="checkbox" id="symbols">
+<label 
+for="symbols"
+class="text-2xl text-white">
+Include Symbols
+</label>
+</div>
+</div>
+<div class="flex justify-between items-center mt-8 bg-gray-700 p-4 w-[500px] h-[80px]">
+<h2 class="text-gray-300">
+STRENGTH
+</h2>
+<div class="flex items-center gap-3">
+<div id="status" class="text-white"></div>
+<div class="flex gap-1">
+<div 
+id="bar1"
+class="w-2 h-5 border border-white">
+</div>
+<div 
+id="bar2"
+class="w-2 h-5 border border-white">
+</div>
+<div 
+id="bar3"
+class="w-2 h-5 border border-white">
+</div>
+<div 
+id="bar4"
+class="w-2 h-5 border border-white">
+</div>
+</div>
+</div>
+</div>
+<div class="mt-10">
+<button
+id="generateBtn"
+class="bg-green-500 w-[500px] h-[80px] flex items-center justify-center text-xl">
+GENERATE
 </button>
 </div>
-  </div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+</div>
+<script type="module" src="/src/main.js"></script>
+</body>
 </html>
