@@ -1,39 +1,25 @@
 import "./style.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-
-// عناصر
-
 const codeGenerate = document.querySelector("#codeGenerate");
 const copyBtn = document.querySelector("#copyBtn");
-
 const range = document.querySelector("#range");
 const lengthNumber = document.querySelector("#span");
-
 const generateBtn = document.querySelector("#generateBtn");
-
 const uppercase = document.querySelector("#uppercase");
 const lowercase = document.querySelector("#lowercase");
 const numbers = document.querySelector("#numbers");
 const symbols = document.querySelector("#symbols");
-
 const status = document.querySelector("#status");
-
 const bars = [
   document.querySelector("#bar1"),
   document.querySelector("#bar2"),
   document.querySelector("#bar3"),
   document.querySelector("#bar4"),
 ];
-
-// کاراکترها
-
 const upperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const lowerChars = "abcdefghijklmnopqrstuvwxyz";
 const numberChars = "0123456789";
 const symbolChars = "!@#$%^&*";
-
-// اسلایدر
-
 range.addEventListener("input", () => {
   lengthNumber.textContent = range.value;
 
@@ -47,8 +33,6 @@ range.addEventListener("input", () => {
   )
   `;
 });
-
-// ساخت رمز
 
 generateBtn.addEventListener("click", () => {
   let chars = "";
@@ -78,54 +62,31 @@ generateBtn.addEventListener("click", () => {
 
     password += randomChar(symbolChars);
   }
-
   if (chars === "") {
     alert("Select option");
-
     return;
   }
-
   while (password.length < range.value) {
     password += randomChar(chars);
   }
-
-  // قاطی کردن رمز
-
   password = password
     .split("")
     .sort(() => Math.random() - 0.5)
     .join("");
-
   codeGenerate.value = password;
-
   checkStrength();
 });
-
-// تولید کاراکتر رندوم
-
 function randomChar(text) {
   return text[Math.floor(Math.random() * text.length)];
 }
-
-// قدرت رمز
-
 function checkStrength() {
   let score = 0;
-
   if (uppercase.checked) score++;
-
   if (lowercase.checked) score++;
-
   if (numbers.checked) score++;
-
   if (symbols.checked) score++;
-
   if (range.value >= 10) score++;
-
   if (range.value >= 15) score++;
-
-  // خاموش کردن همه
-
   bars.forEach((bar) => {
     if (bar) {
       bar.style.background = "#18171F";
@@ -160,14 +121,9 @@ function checkStrength() {
     });
   }
 }
-
-// کپی کردن رمز
-
 copyBtn.addEventListener("click", () => {
   navigator.clipboard.writeText(codeGenerate.value);
-
   copyBtn.innerHTML = `<i class="fa-solid fa-check text-[#A4FFAF] text-2xl"></i>`;
-
   setTimeout(() => {
     copyBtn.innerHTML = `<i class="fa-regular fa-copy text-[#A4FFAF] text-2xl"></i>`;
   }, 1500);
