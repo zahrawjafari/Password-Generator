@@ -1,139 +1,174 @@
 import "./style.css";
-import { createIcons, Copy } from "lucide";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
-createIcons({
-  icons: {
-    Copy,
-  },
-});
-const password = document.querySelector("#password");
+// عناصر
+
+const codeGenerate = document.querySelector("#codeGenerate");
+const copyBtn = document.querySelector("#copyBtn");
+
 const range = document.querySelector("#range");
-const span = document.querySelector("#span");
-const generate = document.querySelector("#generate");
-const copy = document.querySelector("#copy");
+const lengthNumber = document.querySelector("#span");
+
+const generateBtn = document.querySelector("#generateBtn");
+
 const uppercase = document.querySelector("#uppercase");
 const lowercase = document.querySelector("#lowercase");
 const numbers = document.querySelector("#numbers");
 const symbols = document.querySelector("#symbols");
-range.addEventListener("input", () => {
-  span.textContent = range.value;
-});
-const upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-const lower = "abcdefghijklmnopqrstuvwxyz";
-const nums = "0123456789";
-const sym = "!@#$%^&*";
-function createPassword() {
-  let chars = "";
 
-  if (uppercase.checked) {
-    chars += upper;
-  }
-
-  if (lowercase.checked) {
-    chars += lower;
-  }
-
-  if (numbers.checked) {
-    chars += nums;
-  }
-
-  if (symbols.checked) {
-    chars += sym;
-  }
-
-  let result = "";
-
-  for (let i = 0; i < range.value; i++) {
-    result += chars[Math.floor(Math.random() * chars.length)];
-  }
-
-  password.value = result;
-}
-generate.addEventListener("click", createPassword);
 const status = document.querySelector("#status");
 
-const bar1 = document.querySelector("#bar1");
-const bar2 = document.querySelector("#bar2");
-const bar3 = document.querySelector("#bar3");
-const bar4 = document.querySelector("#bar4");
-function checkStrength() {
-  let score = 0;
+const bars = [
+  document.querySelector("#bar1"),
+  document.querySelector("#bar2"),
+  document.querySelector("#bar3"),
+  document.querySelector("#bar4"),
+];
+
+// کاراکترها
+
+const upperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const lowerChars = "abcdefghijklmnopqrstuvwxyz";
+const numberChars = "0123456789";
+const symbolChars = "!@#$%^&*";
+
+// اسلایدر
+
+range.addEventListener("input", () => {
+  lengthNumber.textContent = range.value;
+
+  let percent = ((range.value - range.min) / (range.max - range.min)) * 100;
+
+  range.style.background = `
+  linear-gradient(
+    to right,
+    #A4FFAF ${percent}%,
+    #18171F ${percent}%
+  )
+  `;
+});
+
+// ساخت رمز
+
+generateBtn.addEventListener("click", () => {
+  let chars = "";
+
+  let password = "";
 
   if (uppercase.checked) {
-    score++;
+    chars += upperChars;
+
+    password += randomChar(upperChars);
   }
 
   if (lowercase.checked) {
-    score++;
+    chars += lowerChars;
+
+    password += randomChar(lowerChars);
   }
 
   if (numbers.checked) {
-    score++;
+    chars += numberChars;
+
+    password += randomChar(numberChars);
   }
 
   if (symbols.checked) {
-    score++;
+    chars += symbolChars;
+
+    password += randomChar(symbolChars);
   }
 
-  // خاموش کردن همه نوارها
-  bar1.classList.remove("bg-green-400");
-  bar2.classList.remove("bg-green-400");
-  bar3.classList.remove("bg-green-400");
-  bar4.classList.remove("bg-green-400");
+  if (chars === "") {
+    alert("Select option");
 
-  if (score <= 1) {
-    status.textContent = "WEAK";
-    bar1.classList.add("bg-red-500");
-  } else if (score === 2) {
-    status.textContent = "MEDIUM";
-    bar1.classList.add("bg-yellow-400");
-    bar2.classList.add("bg-yellow-400");
-  } else if (score === 3) {
-    status.textContent = "GOOD";
-    bar1.classList.add("bg-green-400");
-    bar2.classList.add("bg-green-400");
-    bar3.classList.add("bg-green-400");
-  } else {
-    status.textContent = "STRONG";
-    bar1.classList.add("bg-green-400");
-    bar2.classList.add("bg-green-400");
-    bar3.classList.add("bg-green-400");
-    bar4.classList.add("bg-green-400");
-  }
-}
-uppercase.addEventListener("change", checkStrength);
-lowercase.addEventListener("change", checkStrength);
-numbers.addEventListener("change", checkStrength);
-symbols.addEventListener("change", checkStrength);
-copy.addEventListener("click", () => {
-  if (password.value === "") {
     return;
   }
 
-  navigator.clipboard.writeText(password.value);
+  while (password.length < range.value) {
+    password += randomChar(chars);
+  }
 
-  copy.setAttribute("data-lucide", "check");
+  // قاطی کردن رمز
 
-  lucide.createIcons();
+  password = password
+    .split("")
+    .sort(() => Math.random() - 0.5)
+    .join("");
+
+  codeGenerate.value = password;
+
+  checkStrength();
+});
+
+// تولید کاراکتر رندوم
+
+function randomChar(text) {
+  return text[Math.floor(Math.random() * text.length)];
+}
+
+// قدرت رمز
+
+function checkStrength() {
+  let score = 0;
+
+  if (uppercase.checked) score++;
+
+  if (lowercase.checked) score++;
+
+  if (numbers.checked) score++;
+
+  if (symbols.checked) score++;
+
+  if (range.value >= 10) score++;
+
+  if (range.value >= 15) score++;
+
+  // خاموش کردن همه
+
+  bars.forEach((bar) => {
+    if (bar) {
+      bar.style.background = "#18171F";
+    }
+  });
+
+  if (score <= 2) {
+    status.textContent = "TOO WEAK!";
+
+    bars[0].style.background = "#F64A4A";
+  } else if (score <= 4) {
+    status.textContent = "WEAK";
+
+    bars[0].style.background = "#FB7C58";
+
+    bars[1].style.background = "#FB7C58";
+  } else if (score <= 5) {
+    status.textContent = "MEDIUM";
+
+    bars[0].style.background = "#F8CD65";
+
+    bars[1].style.background = "#F8CD65";
+
+    bars[2].style.background = "#F8CD65";
+  } else {
+    status.textContent = "STRONG";
+
+    bars.forEach((bar) => {
+      if (bar) {
+        bar.style.background = "#A4FFAF";
+      }
+    });
+  }
+}
+
+// کپی کردن رمز
+
+copyBtn.addEventListener("click", () => {
+  navigator.clipboard.writeText(codeGenerate.value);
+
+  copyBtn.innerHTML = `<i class="fa-solid fa-check text-[#A4FFAF] text-2xl"></i>`;
 
   setTimeout(() => {
-    copy.setAttribute("data-lucide", "copy");
-    lucide.createIcons();
-  }, 1500);
-});
-copy.addEventListener("click", () => {
-  navigator.clipboard.writeText(password.value);
-});
-copy.addEventListener("click", () => {
-  if (password.value === "") return;
-
-  navigator.clipboard.writeText(password.value);
-
-  copy.setAttribute("data-lucide", "check");
-  lucide.createIcons();
-
-  setTimeout(() => {
-    copy.setAttribute("data-lucide", "copy");
-    lucide.createIcons();
+    copyBtn.innerHTML = `<i class="fa-regular fa-copy text-[#A4FFAF] text-2xl"></i>`;
   }, 1500);
 });

@@ -7,17 +7,24 @@
     <title>password-generator</title>
   </head>
   <body class="bg-[#14131B] font-[jetBrains] min-h-screen flex flex-col items-center">
-  <div class=" mt-6">
-    <h1 class="text-gray-700 font-bold text-3xl">Password Generator</h1>
+ <div class="w-[540px] mx-auto mt-20">
+
+  <h1 class="text-center text-gray-400 text-xl mb-6">
+    Password Generator
+  </h1>
+  <div class="bg-gray-900 flex justify-between items-center p-6">
+    <input
+      id="codeGenerate"
+      type="text"
+      placeholder="P4$5W0rD!"
+      readonly
+      class="bg-transparent outline-none text-3xl text-white w-full"
+    />
+    <button id="copyBtn">
+      <i class="fa-regular fa-copy text-[#A4FFAF] text-2xl"></i>
+    </button>
   </div>
-  <div class="bg-gray-900 w-[540px] h-[80px] flex items-center justify-between px-6">
-<input 
-type="password" 
-id="password"
-class="bg-transparent outline-none text-white text-2xl w-full"
-/>
-<i data-lucide="copy" class="w-6 h-6 text-[#A4FFAF]" id="copy"></i>
-  </div>
+</div>
   <div class="bg-gray-900 w-[540px] h-[500px] justify-self-center mt-10 p-5">
       <h4 class="text-white text-2xl mb-5">Character Length <span id="span" class="text-4xl text-green-400 ml-[250px]">10</span></h4>
 <input 
@@ -71,8 +78,8 @@ Include Uppercase Letters
           </div>
         </div>
 
-<div id="generate" class="justify-self-center mt-12">
- <button 
+<div class="justify-self-center mt-12">
+ <button id="generatebtn"
 class="bg-green-500 w-[500px] h-[80px] flex items-center justify-center">
 generate
 </button>
